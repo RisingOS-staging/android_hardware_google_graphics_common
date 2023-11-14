@@ -22,7 +22,10 @@ LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SHARED_LIBRARIES := libcutils libdrm liblog libutils libhardware
+
+ifeq ($(INLINE_KERNEL_BUILDING),true)
 LOCAL_HEADER_LIBRARIES += generated_kernel_headers
+endif
 
 LOCAL_PROPRIETARY_MODULE := true
 
@@ -79,7 +82,10 @@ LOCAL_HEADER_LIBRARIES := libhardware_legacy_headers \
 			  libbinder_headers google_hal_headers \
 			  libgralloc_headers \
 			  android.hardware.graphics.common-V3-ndk_headers
+
+ifeq ($(INLINE_KERNEL_BUILDING),true)
 LOCAL_HEADER_LIBRARIES += generated_kernel_headers
+endif
 
 LOCAL_STATIC_LIBRARIES += libVendorVideoApi
 LOCAL_STATIC_LIBRARIES += libjsoncpp
